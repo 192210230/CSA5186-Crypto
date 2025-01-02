@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<string.h>
+void encrypt(char *text, char *key) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (text[i] >= 'a' && text[i] <= 'z') {
+            text[i] = key[text[i] - 'a'];
+        } else if (text[i] >= 'A' && text[i] <= 'Z') {
+            text[i] = key[text[i] - 'A'] - 32; 
+        }
+    }
+}
+int main() {
+    char text[100], key[26];
+    printf("Enter the plaintext: ");
+    fgets(text, sizeof(text), stdin);
+    printf("Enter the substitution key (26 letters): ");
+    scanf("%s", key);
+    encrypt(text, key);
+    printf("Encrypted text: %s", text);
+    return 0;
+}
